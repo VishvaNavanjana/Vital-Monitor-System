@@ -60,7 +60,11 @@ public class GatewayServer {
                     vitalMonitors.add(monitor.getMonitorID());
                     // print the monitor
                     System.out.println(monitor.monitor_str());
-                    }
+
+                    // create a thread for each vital monitor
+                    TCPConnection tcpConnection = new TCPConnection(monitor.getIp(), monitor.getPort());
+                    tcpConnection.start();
+                }
 
 
             } catch (IOException e) {
